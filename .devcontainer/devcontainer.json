@@ -1,17 +1,19 @@
 {
-    "image": "mcr.microsoft.com/devcontainers/javascript-node:3-22",
-    "features": {
-        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-    },
-    "postCreateCommand": "npm install -g @devcontainers/cli",
-    "hostRequirements": {
-        "cpus": 4
-    },
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "mads-hartmann.bash-ide-vscode"
-            ]
-        }
+  "name": "My VNC Desktop",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+    "ghcr.io/devcontainers/features/desktop-lite:1": {
+      "password": "vscode",
+      "webPort": "6080",
+      "vncPort": "5901",
+      "noVncVersion": "1.2.0"
     }
+  },
+  "forwardPorts": [6080],
+  "portsAttributes": {
+    "6080": {
+      "label": "noVNC Web",
+      "onAutoForward": "openPreview"
+    }
+  }
 }
